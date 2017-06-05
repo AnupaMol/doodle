@@ -16,7 +16,6 @@ public class RestApiController {
 		 final String uri = "http://172.16.20.10:8080/getProductByCategory/1";
 		 RestTemplate restTemplate = new RestTemplate();
 		 String result = restTemplate.getForObject(uri, String.class);
-
 		 return result;
 	    }
 	 
