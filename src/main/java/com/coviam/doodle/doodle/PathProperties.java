@@ -7,9 +7,18 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class PathProperties {
 	private String product;
+	private String search;
 
 	public String getProduct() {
 		return product;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
 	}
 
 	public void setProduct(String product) {

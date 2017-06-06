@@ -28,5 +28,15 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		@RequestMapping(value = "/search/{query}", method = RequestMethod.GET)
+	    public Object search(@PathVariable("query") String query) {
+	       
+		 final String uri = paths.getSearch() +"/search/"+query;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return result;
+	    }
+		
 	 
 }
