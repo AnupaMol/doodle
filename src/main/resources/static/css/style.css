@@ -54,5 +54,16 @@ border: solid 0.9px #f3f3f3;
     position: relative;
     width: 30%;
 }
+.sidemenu{
+  padding:15px;
+  text-align: left;
+  color:black;
+}
+.sidemenu:hover{
+  background-color: #e0e0e0;
+}
 
+.sidemenubar{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);height:100vh;margin-top:-66px;position:fixed;background-color: white;overflow-y:scroll;
+}
 

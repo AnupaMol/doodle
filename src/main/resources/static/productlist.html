@@ -10,10 +10,17 @@
                        <div class="center row">
                           <div class="col s12 " >
                             <div class="row" id="topbarsearch">
-                              <div class="input-field col s6 s12 bcolor">
-                                <i class="b-text material-icons prefix">search</i>
+                              <form >
+                              <div class="input-field col s9  bcolor">
+                                
                                 <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete b-text" >
+                                
                                 </div>
+                                <div class="col s3">
+                                <button class="waves-effect waves-light btn" type="submit"><i style="margin-top:-13px;" class="material-icons">search</i></button>
+                               
+                                </div>
+                                </form>
                               </div>
                             </div>
                           </div>          
@@ -57,14 +64,22 @@
   <br>
   <br>
 <section class="row" style="position :relative;width:100%">
+<div class="col m2 sidemenubar">
+<center>
+<ul   ng-controller="myCtrl">
+  <a href="#"><li class="sidemenu" ng-repeat="x in category">{{x}}</li></a>
+ 
+</ul>
+</center>
+</div>
   <div class="col m8 offset-m3">
   <div class="row" style="display:inline-block;width:100%;" >
     <div  ng-repeat="x in content" class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;" >
         <center>
           <a href="/product_description/{{}}"> <img  class="img-responsive center-align"  src="{{x.imageurl}}" style="height: 140px;width: auto;padding-top: 13px;" >
-      <span style="color:grey;">  <p> {{ x.name }}</p> </span>
-          
-          <span style="color:grey;"> <p>{{x.rating}}<i class="material-icons">stars</i></p></span></a></center>
+      <p> {{ x.name }}</p> 
+          <p>&nbsp; &nbsp;{{x.price}}</p>
+           <p>{{x.rating}}<i class="material-icons">stars</i></p></a></center>
     </div>
  
     
