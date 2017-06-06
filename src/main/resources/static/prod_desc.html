@@ -1,4 +1,5 @@
-  
+
+       
     <div class="navbar-fixed">    
         <nav class="white">
 
@@ -13,11 +14,11 @@
                               <form >
                               <div class="input-field col s9  bcolor">
                                 
-                                <input type="text" placeholder="search" id="searchBox" class="autocomplete b-text" >
+                                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete b-text" >
                                 
                                 </div>
                                 <div class="col s3">
-                                <button class="waves-effect waves-light btn" type="submit" ng-click="search()"><i style="margin-top:-13px;" class="material-icons">search</i></button>
+                                <button class="waves-effect waves-light btn" type="submit"><i style="margin-top:-13px;" class="material-icons">search</i></button>
                                
                                 </div>
                                 </form>
@@ -25,26 +26,21 @@
                             </div>
                           </div>          
                       </li>                     
-                    
                     <li><a class="dropdown-button b-text" href="#!" data-activates="dropdown" data-beloworigin="true" ><i class="material-icons">shopping_cart</i> </a></li>
                     <li><a class="b-text modal-trigger" href="#modal1"><i class="material-icons">view_list</i> </a></li>
-                    
                 </ul>
+                
                 <ul id="dropdown" class="dropdown-content collection">
                     <li class="collection-item avatar">
                         <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
                         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                        
-                     
                     </li>
                 </ul>
-
                 
-
             </div>
           </nav>     
-</div>
-<div id="modal1" class="modal">
+    </div>
+    <div id="modal1" class="modal">
                   <div class="modal-content">
                     <h4>Orders</h4>
                     <p>Enter yout email to view your orders</p>
@@ -57,46 +53,47 @@
                     <button class="waves-effect waves-light btn" type="submit">button</button>
                     </form>
                   </div>
-                  
-                </div>
-<br>
-
-  <br>
-  <br>
-<section class="row" style="position :relative;width:100%">
-<div class="col m2 sidemenubar">
-<center>
-<ul >
-  <a href="#"><li class="sidemenu" ng-repeat="x in category">{{x}}</li></a>
- 
-</ul>
-</center>
-</div>
-  <div class="col m8 offset-m3">
-  <div class="row" style="display:inline-block;width:100%;" >
-    <div  ng-repeat="x in content" class="col m3 s6 shadow" id="t" style="display:inline;height:280px;width:25%;" >
-        <center>
-          <a href="/product_description/{{}}"> <img  class="img-responsive center-align"  src="{{x.imageurl}}" style="height: 140px;width: auto;padding-top: 13px;" >
-      <p> {{ x.name }}</p> 
-          <p>&nbsp; &nbsp;{{x.price}}</p>
-           <p>{{x.rating}}<i class="material-icons">stars</i></p></a></center>
-      
     </div>
- 
+        
+        
+    <div class="row" style="width:100%; margin-top:5%"  ng-repeat="x in xx">
+            <div class="col s3 m3 offset-m2">
+                <img src="{{x.image}}" width="100%" height="100%" ><br/>
+                <select ng-model="qty">
+                  <option value="" disabled selected>Quantity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <p>Stock</p>
+                <button class="btn waves-effect" style="background-color:#0096d9" ng-click = "addTocart()"> Add to cart </button>
+            </div>
+            
+            <div class="col s5 m5 offset-s2 offset-m2" >
+                <h5>{{x.name}}</h5>
+                Sold by: {{x.seller}}<br/>
+                <h5>{{x.price}}</h5><br/>
+                <p class="subhead">USP</p> <br/>
+                <p class="subhead">Attributes</p> <br/>
+                <p class="subhead">Product Description</p> {{x.desc.join(" ")}}<br/>
+                <p class="subhead">Reviews and rating by customers</p> Rating:{{x.rating}}<br/>Review:{{x.review}}
+            </div>
+    </div>
+            <section class="row" style="position :relative;width:100%">
+                <center><h5>Other Merchants selling this product</h5></center>
+  <div class="col m8 offset-m3">
+  <div class="row" style="display:inline-block;width:100%;">
+    
+      <div class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" ng-repeat="y in merchants">
+        <center>
+          <a href="/product_description/{{ y.id }}"> <img src="{{y.image}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
+          <span style="color:grey;">  <p> {{y.name}} </p> </span>
+        <span style="color:grey;">  <p> {{y.seller}} </p> </span>      
+          <span style="color:grey;"><p>${{y.price}}</p></span>
+          <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons">stars</i></p></span></a></center>
+    </div>
     
   </div>
   </div>
-  </div>
-
 </section>
-
-
-  <div style="height:100px">
-
-
-</div>
-
-
-
-
 
