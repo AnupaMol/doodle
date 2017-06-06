@@ -10,10 +10,10 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'ListController'
                 
             })
-            .state('list', {
-                url: '/list',
-                templateUrl: 'productlist.html',
-                controller: 'ListController'
+            .state('product', {
+                url: '/prodlist/:prodId',
+                templateUrl: 'prod_desc.html',
+                controller: 'ProdDescController'
                 
             })
            

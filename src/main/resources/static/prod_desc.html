@@ -56,9 +56,9 @@
     </div>
         
         
-    <div class="row" style="width:100%; margin-top:5%"  ng-repeat="x in xx">
+    <div class="row" style="width:100%; margin-top:5%" >
             <div class="col s3 m3 offset-m2">
-                <img src="{{x.image}}" width="100%" height="100%" ><br/>
+                <img src="{{content.imageurl}}" width="100%" height="100%" ><br/>
                 <select ng-model="qty">
                   <option value="" disabled selected>Quantity</option>
                   <option value="1">1</option>
@@ -70,13 +70,13 @@
             </div>
             
             <div class="col s5 m5 offset-s2 offset-m2" >
-                <h5>{{x.name}}</h5>
-                Sold by: {{x.seller}}<br/>
-                <h5>{{x.price}}</h5><br/>
-                <p class="subhead">USP</p> <br/>
-                <p class="subhead">Attributes</p> <br/>
-                <p class="subhead">Product Description</p> {{x.desc.join(" ")}}<br/>
-                <p class="subhead">Reviews and rating by customers</p> Rating:{{x.rating}}<br/>Review:{{x.review}}
+                <h5>{{content.name}}</h5>
+                Sold by: {{content.otherMerchantToOffer[0].name}}<br/>
+                <h5>{{content.otherMerchantToOffer[0].price}}</h5><br/>
+                <p class="subhead">USP</p>{{content.usp}} <br/>
+                <p class="subhead">Attributes</p> {{content.attributes}}<br/>
+                <p class="subhead">Product Description</p> {{content.description}}<br/>
+                <p class="subhead">Reviews and rating by customers</p> Rating:{{content.productRatingReviews[0].rating}}<br/>Review:{{content.productRatingReviews[0].review}}
             </div>
     </div>
             <section class="row" style="position :relative;width:100%">
@@ -84,12 +84,12 @@
   <div class="col m8 offset-m3">
   <div class="row" style="display:inline-block;width:100%;">
     
-      <div class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" ng-repeat="y in merchants">
+      <div class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" ng-repeat="y in content.otherMerchantToOffer">
         <center>
-          <a href="/product_description/{{ y.id }}"> <img src="{{y.image}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
-          <span style="color:grey;">  <p> {{y.name}} </p> </span>
-        <span style="color:grey;">  <p> {{y.seller}} </p> </span>      
-          <span style="color:grey;"><p>${{y.price}}</p></span>
+          <a href="/product_description/{{ y.id }}"> <img src="{{y.imageurl}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
+          <span style="color:grey;">  <p> {{content.name}} </p> </span>
+        <span style="color:grey;">  <p> {{y.name}} </p> </span>      
+          <span style="color:grey;"><p>{{y.price}}</p></span>
           <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons">stars</i></p></span></a></center>
     </div>
     
