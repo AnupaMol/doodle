@@ -16,12 +16,7 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'ListController'
                 
             })
-            .state('search', {
-                url: '/search',
-                templateUrl: 'searchlist.html',
-                controller: 'searchController'
-                
-            })
+           
 }]);
 
 app.factory('myService', function($http) {
