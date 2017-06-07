@@ -10,18 +10,13 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'ListController'
                 
             })
-            .state('list', {
-                url: '/list',
-                templateUrl: 'productlist.html',
-                controller: 'ListController'
+            .state('product', {
+                url: '/prodlist/:prodId',
+                templateUrl: 'prod_desc.html',
+                controller: 'ProdDescController'
                 
             })
-            .state('search', {
-                url: '/search',
-                templateUrl: 'searchlist.html',
-                controller: 'searchController'
-                
-            })
+<<<<<<< HEAD
             .state('order', {
                 url: '/order',
                 templateUrl: 'order.html',
@@ -34,8 +29,13 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'HomeController'
                 
             })
+=======
+           
+>>>>>>> 6ac3576ae5faa8826855f5ee80f8607662b1f454
 }]);
-
+app.run(function($rootScope){
+$rootScope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+}); 
 app.factory('myService', function($http) {
 
     var getData = function(file) {

@@ -28,6 +28,41 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		
+		// get the product description from top merchant
+		@RequestMapping(value = "/getProduct/{key}", method = RequestMethod.GET)
+	    public Object getProduct(@PathVariable("key") int prod_id) {
+	      
+		 final String uri = paths.getProduct() +"/getProduct/"+prod_id;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return result;
+	    }
+		
+		//product of particular merchant
+		@RequestMapping(value = "/getProduct/{prodId}/{MercId}", method = RequestMethod.GET)
+	    public Object getProductOfMerchant(@PathVariable("prodId") int prod_id,@PathVariable("prodId") int merc_id) {
+	      
+		 final String uri = paths.getProduct() +"/getProduct/"+prod_id+"/"+merc_id;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return result;
+	    }
+		
+		/*
+		 * @RequestMapping(value = "/getProd/{key}", method = RequestMethod.GET)
+	    public ModelAndView getProduct(@PathVariable("key") String prod_id) {
+	       
+
+		 final String uri = paths.getProduct() +"/getProduct/"+prod_id;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return new ModelAndView("prod_desc.html", "product",result);
+	    }
+		 */
 		@RequestMapping(value = "/search/{query}", method = RequestMethod.GET)
 	    public Object search(@PathVariable("query") String query) {
 	       
@@ -37,6 +72,16 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		
+		/*
+		 * @RequestMapping
+public ModelAndView getSuperheroes() {
+  return new ModelAndView("superheroes", "superheroes", Arrays.asList(
+     new Superhero("Clark", "Kent", "Superman", true),
+     new Superhero("Siobhan", "McDougal", "Silver Banshee", false)
+  ));
+}
+		 */
 		
 	 
 }
