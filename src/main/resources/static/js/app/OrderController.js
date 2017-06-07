@@ -1,5 +1,12 @@
-app.controller("OrderController", function($scope,$http) {
-            
+app.controller("OrderController", function($scope,$http,myService,$stateParams) {
+    
+	console.log($stateParams.email);
+	var orderList=myService.getData('/api/getOrderByEmail/'+$stateParams.email);
+	orderList.then(function(result){
+   	$scope.content =result;
+   	console.log($scope.content);
+    });
+			
             $scope.orderitem=[{
               
               "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",

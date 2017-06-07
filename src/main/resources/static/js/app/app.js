@@ -4,8 +4,8 @@ var app = angular.module('doodle', ['ui.router'])
 .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
           $urlRouterProvider.otherwise('/');
           $stateProvider
-          .state('home', {
-                url: '/',
+          .state('list', {
+                url: '/list/:categoryId',
                 templateUrl: 'productlist.html',
                 controller: 'ListController'
                 
@@ -17,24 +17,45 @@ var app = angular.module('doodle', ['ui.router'])
                 
             })
 
-            .state('order', {
-                url: '/order',
-                templateUrl: 'order.html',
-                controller: 'OrderController'
+            .state('searchproduct', {
+                url: '/search/:query',
+                templateUrl: 'searchlist.html',
+                controller: 'SearchController'
                 
             })
-            .state('indexpage', {
-                url: '/home',
+            .state('home', {
+                url: '/',
                 templateUrl: 'home.html',
                 controller: 'HomeController'
                 
             })
-
+            .state('userorder', {
+                url: '/userorder/:email',
+                templateUrl: 'order.html',
+                controller: 'OrderController'
+                
+            })
            
->>>>>>> 6ac3576ae5faa8826855f5ee80f8607662b1f454
+
 }]);
-app.run(function($rootScope){
-$rootScope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+app.run(function($rootScope,$http,$window){
+	$rootScope.UserOrder=function(){
+		console.log("Insie user email");
+		var email= document.getElementById("email").value;
+		console.log(email);
+		$window.location.href = '#!/userorder/'+email;
+	}
+	$rootScope.search=function(){
+		console.log("Insie app searchcs");
+		var query= document.getElementById("searchBox").value;
+		console.log(query);
+		$window.location.href = '#!/search/'+query;
+      }
+$rootScope.category =[];
+$http.get('/api/getCategory').then(function (response) {
+	$rootScope.category = response.data;
+	console.log($rootScope.category);
+});
 }); 
 app.factory('myService', function($http) {
 

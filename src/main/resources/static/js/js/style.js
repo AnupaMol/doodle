@@ -22,8 +22,8 @@ $('.dropdown-button').dropdown({
     }
   );
  $(document).ready(function(){
-      $('.slider').slider();
-    });
+     $('.slider').slider();
+   });
         
 
 		}); 

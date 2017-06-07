@@ -1,10 +1,10 @@
-     app.controller("ListController", function($scope,$http,myService) {
+     app.controller("ListController", function($scope,$http,$stateParams,myService) {
         
             console.log("In ListController");
            // $rootScope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
           
-            
-            var jsonData=myService.getData('/api/listProd/1');
+            $scope.categoryId = $stateParams.categoryId;
+            var jsonData=myService.getData('/api/listByCategory/'+$scope.categoryId);
             jsonData.then(function(result){
                 $scope.content =result;
                 console.log(result);
@@ -12,13 +12,5 @@
             
             //By Vivek
             
-             $scope.search=function(){
-            	console.log("inside query");
-           	    var query = document.getElementById("searchBox").value;
-            	console.log("Inside Query"+query);
-            	var productList=myService.getData('http://localhost:8080/api/search/'+query);                productList.then(function(result){
-               	$scope.content =result; 
-                });
-            	
-            }   
+               
         });

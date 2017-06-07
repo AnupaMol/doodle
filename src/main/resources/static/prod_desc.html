@@ -15,8 +15,8 @@
             
             <div class="col s5 m5 offset-s2 offset-m2" >
                 <h5>{{content.name}}</h5>
-                Sold by: {{content.otherMerchantToOffer[0].name}}<br/>
-                <h5>{{content.otherMerchantToOffer[0].price}}</h5><br/>
+                Sold by: {{currentMerchantName}}<br/>
+                <h5>{{currentMerchantPrice}}</h5><br/>
                 <p class="subhead">USP</p>{{content.usp}} <br/>
                 <p class="subhead">Attributes</p> {{content.attributes}}<br/>
                 <p class="subhead">Product Description</p> {{content.description}}<br/>
@@ -28,9 +28,9 @@
   <div class="col m8 offset-m3">
   <div class="row" style="display:inline-block;width:100%;">
     
-      <div class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" ng-repeat="y in content.otherMerchantToOffer">
-        <center>
-          <a href="/product_description/{{ y.id }}"> <img src="{{y.imageurl}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
+      <div ng-repeat="y in content.otherMerchantToOffer" ng-hide="currentMerchantName==y.name"  class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" >
+        <center >
+          <a href="" ng-click="getProdMerchantFeed(content.productid,y.merchantId,$index)"> <img src="{{y.logo}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
           <span style="color:grey;">  <p> {{content.name}} </p> </span>
         <span style="color:grey;">  <p> {{y.name}} </p> </span>      
           <span style="color:grey;"><p>{{y.price}}</p></span>
