@@ -22,6 +22,18 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'searchController'
                 
             })
+            .state('order', {
+                url: '/order',
+                templateUrl: 'order.html',
+                controller: 'OrderController'
+                
+            })
+            .state('indexpage', {
+                url: '/home',
+                templateUrl: 'home.html',
+                controller: 'HomeController'
+                
+            })
 }]);
 
 app.factory('myService', function($http) {
