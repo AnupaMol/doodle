@@ -1,7 +1,7 @@
      app.controller("ListController", function($scope,$http,myService) {
         
             console.log("In ListController");
-            $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+           // $rootScope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
           
             
             var jsonData=myService.getData('/api/listProd/1');

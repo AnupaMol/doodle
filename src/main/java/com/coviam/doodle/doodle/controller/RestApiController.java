@@ -28,16 +28,29 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		
+		// get the product description from top merchant
 		@RequestMapping(value = "/getProduct/{key}", method = RequestMethod.GET)
 	    public Object getProduct(@PathVariable("key") int prod_id) {
-	       
-
+	      
 		 final String uri = paths.getProduct() +"/getProduct/"+prod_id;
 		 
 		 RestTemplate restTemplate = new RestTemplate();
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		
+		//product of particular merchant
+		@RequestMapping(value = "/getProduct/{prodId}/{MercId}", method = RequestMethod.GET)
+	    public Object getProductOfMerchant(@PathVariable("prodId") int prod_id,@PathVariable("prodId") int merc_id) {
+	      
+		 final String uri = paths.getProduct() +"/getProduct/"+prod_id+"/"+merc_id;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return result;
+	    }
+		
 		/*
 		 * @RequestMapping(value = "/getProd/{key}", method = RequestMethod.GET)
 	    public ModelAndView getProduct(@PathVariable("key") String prod_id) {

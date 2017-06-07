@@ -18,7 +18,9 @@ var app = angular.module('doodle', ['ui.router'])
             })
            
 }]);
-
+app.run(function($rootScope){
+$rootScope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+}); 
 app.factory('myService', function($http) {
 
     var getData = function(file) {
