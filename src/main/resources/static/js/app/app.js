@@ -16,7 +16,7 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'ProdDescController'
                 
             })
-<<<<<<< HEAD
+
             .state('order', {
                 url: '/order',
                 templateUrl: 'order.html',
@@ -29,7 +29,7 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'HomeController'
                 
             })
-=======
+
            
 >>>>>>> 6ac3576ae5faa8826855f5ee80f8607662b1f454
 }]);
