@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('doodle', ['ui.router'])
+var app = angular.module('doodle', ['ui.router','ngStorage'])
 .config(['$urlRouterProvider', '$stateProvider', function ($urlRouterProvider, $stateProvider) {
           $urlRouterProvider.otherwise('/');
           $stateProvider
@@ -36,7 +36,7 @@ var app = angular.module('doodle', ['ui.router'])
                 
             })
             .state('usercart', {
-                url: '/usercart/',
+                url: '/usercart',
                 templateUrl: 'cart.html',
                 controller: 'CartController'
                 
@@ -45,6 +45,10 @@ var app = angular.module('doodle', ['ui.router'])
 
 }]);
 app.run(function($rootScope,$http,$window){
+	$rootScope.orderCarts=function(){
+		console.log("carts");
+		$window.location.href = '#!/usercart';
+	}
 	$rootScope.UserOrder=function(){
 		console.log("Insie user email");
 		var email= document.getElementById("email").value;
@@ -75,20 +79,8 @@ app.factory('myService', function($http) {
             return result.data;
         });
     };
-    var getTime = function() {
-
-        // Angular $http() and then() both return promises themselves 
-        return $http({method:"GET", url:'www.json-time.appspot.com/time.json?tz=America/Chicago&callback=foo'}).then(function(result){
-
-            // What we return here is the data that will be accessible 
-            // to us after the promise resolves
-            //alert(result);
-            //alert("hello");
-            //alert(result.dateString);
-            return result.datetime;
-        });
-    };
+    
 
 
-    return { getData: getData , getTime:getTime};
+    return { getData: getData };
 });

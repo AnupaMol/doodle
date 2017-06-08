@@ -1,11 +1,12 @@
      app.controller("ProdDescController", function($scope,$http,myService,$stateParams,$localStorage) {
-    	 	
+    	 //$localStorage.ls=[];
          if(typeof $localStorage.ls === undefined){
                $localStorage.ls=[];
                 console.log("defined local storage"+ typeof $localStorage);
             }else{
                 console.log(" local storage"+ typeof $localStorage);
             }
+         
     
             console.log("In ListController");
      //       $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
@@ -13,12 +14,15 @@
             $scope.prodId = $stateParams.prodId; 
             $scope.currentMerchantName=";";
             $scope.currentMerchantPrice=90;
+            $scope.currentMerchanId=1;
             var jsonData=myService.getData('/api/getProduct/'+$scope.prodId);
             jsonData.then(function(result){
                 $scope.content =result;
                 console.log(result);
                 $scope.currentMerchantName=$scope.content.otherMerchantToOffer[0].name;
                 $scope.currentMerchantPrice=$scope.content.otherMerchantToOffer[0].price;
+                $scope.currentMerchanId=$scope.content.otherMerchantToOffer[0].merchantId;
+
                 console.log("name-- "+ $scope.currentMerchant);
             });
             
@@ -28,6 +32,7 @@
             	console.log(index);
             	$scope.currentMerchantName=$scope.content.otherMerchantToOffer[index].name;
             	$scope.currentMerchantPrice=$scope.content.otherMerchantToOffer[index].price;
+            	$scope.currentMerchanId=$scope.content.otherMerchantToOffer[index].merchantId;
                 console.log("New Merchant"+ $scope.currentMerchantName);
             	var jsonData=myService.getData('/api/getProductMerchantFeedback/'+prodId+"/"+merchId);
                 jsonData.then(function(result1){
@@ -53,13 +58,13 @@
 //                $localStorage.$reset();
    
                 var obj = { name: $scope.content.name, 
-                            prodId: $scope.content.prodId,
-                            seller: $scope.content.otherMerchantToOffer[0].name,
-                            sellerid: $scope.content.otherMerchantToOffer.id,
-                            price: $scope.content.otherMerchantToOffer[0].price,
+                            prodId: $scope.content.productid,
+                            seller: $scope.currentMerchantName,
+                            sellerid: $scope.currentMerchanId,
+                            price: $scope.currentMerchantPrice,
                             image: $scope.content.imageurl,
                             qty: $scope.qty,
-                            total: ($scope.qty*$scope.content.otherMerchantToOffer[0].price)
+                            total: ($scope.qty*$scope.currentMerchantPrice)
                            };
                 
                 console.log("dd"+typeof $localStorage.ls);

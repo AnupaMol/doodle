@@ -1,12 +1,37 @@
 app.controller("OrderController", function($scope,$http,myService,$stateParams) {
-    
+	$scope.feedback=[];
+	$scope.rating=[];
 	console.log($stateParams.email);
 	var orderList=myService.getData('/api/getOrderByEmail/'+$stateParams.email);
 	orderList.then(function(result){
    	$scope.content =result;
    	console.log($scope.content);
     });
-			
+	
+	$scope.addFeedback=function(index,prodId,merchId){
+		console.log(index);
+		console.log(prodId);
+		console.log(merchId);
+		var rating=$scope.rating[index];//
+		var  review=$scope.feedback[index];
+		var email=$stateParams.email;
+		var obj={};
+		obj["productId"]=prodId;//
+		obj["merchantId"]=merchId;//
+		obj["custEmail"]=email;
+		obj["rating"]=rating;//
+		obj["review"]=review;//
+		
+		
+		
+		$http.post('/api/addFeedback', JSON.stringify(obj)).then(function (response) {
+        	
+        	console.log(response.data);
+        	});
+	}
+	
+	    $('.collapsible').collapsible();
+	 
             $scope.orderitem=[{
               
               "image":"img/apple-iphone-6s-mn112hn-a-original-imaen3f3dynmw8fg.jpeg",

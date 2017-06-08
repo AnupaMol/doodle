@@ -10,9 +10,18 @@ public class PathProperties {
 	private String search;
 	private String order;
 	private String inventory;
+	private String checkout;
 	
 	
 	
+	public String getCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(String checkout) {
+		this.checkout = checkout;
+	}
+
 	public String getInventory() {
 		return inventory;
 	}

@@ -1,14 +1,20 @@
 package com.coviam.doodle.doodle.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.coviam.doodle.doodle.PathProperties;
 
+import com.coviam.doodle.doodle.PathProperties;
+import com.coviam.doodle.doodle.entity.FeedBackDTO;
+import com.coviam.doodle.doodle.entity.OrderDTO;
+import com.coviam.doodle.doodle.entity.OrderResponse;
 @RestController
 @RequestMapping("/api")
 public class RestApiController {
@@ -74,6 +80,15 @@ public class RestApiController {
 		 System.out.println(result);
 		 return result;
 	    }
+		@RequestMapping(value = "/addFeedback", method = RequestMethod.POST)
+		public String OrderDTO(@RequestBody FeedBackDTO list){
+			String uri = paths.getInventory()+"/addFeedback";
+			 System.out.println("===========" + uri);
+			 RestTemplate restTemplate = new RestTemplate();
+			 String result = restTemplate.postForObject(uri,list, String.class);
+			 System.out.println("Feedback"+result);	
+			return result;
+		}
 		
 		//getOrderByEmail
 		@RequestMapping(value = "/getOrderByEmail/{email}", method = RequestMethod.GET)
@@ -87,7 +102,24 @@ public class RestApiController {
 		 System.out.println(result);
 		 return result;
 	    }
-
+		@RequestMapping(value = "/addOrder", method = RequestMethod.POST)
+		public OrderResponse getOrderDTO(@RequestBody List<OrderDTO> list){
+			String uri= paths.getCheckout()+"/addOrder";
+			System.out.println("Add Order"+uri);
+			RestTemplate restTemplate = new RestTemplate();
+			String result =  restTemplate.postForObject(uri, list, String.class);
+			if(result.equals("Success")){
+				System.out.println("checkout Order"+result);
+				OrderResponse response=new OrderResponse();
+				response.setMessage("Success");
+				return response ;
+			}
+			System.out.println("checkout Order"+result);
+			OrderResponse response=new OrderResponse();
+			response.setMessage("Success");
+			return response;
+			
+		}
 	    /* order checkout */
 	    /*s@RequestMapping(value = "/checkout/{query}", method = RequestMethod.GET)
 	    public Object checkout(@PathVariable("query") String query) {
@@ -122,6 +154,8 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+		
+		
 		
 		/*
 		 * @RequestMapping
