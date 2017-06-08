@@ -9,8 +9,18 @@ public class PathProperties {
 	private String product;
 	private String search;
 	private String order;
+	private String inventory;
 	
 	
+	
+	public String getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(String inventory) {
+		this.inventory = inventory;
+	}
+
 	public String getOrder() {
 		return order;
 	}

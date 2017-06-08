@@ -54,11 +54,12 @@ public class RestApiController {
 		//product of particular merchant
 		@RequestMapping(value = "/getProduct/{prodId}/{MercId}", method = RequestMethod.GET)
 	    public Object getProductOfMerchant(@PathVariable("prodId") int prod_id,@PathVariable("prodId") int merc_id) {
-	      
+	     
 		 final String uri = paths.getProduct() +"/getProduct/"+prod_id+"/"+merc_id;
 		 
 		 RestTemplate restTemplate = new RestTemplate();
 		 String result = restTemplate.getForObject(uri, String.class);
+		 System.out.println("Description "+result);
 		 return result;
 	    }
 		
@@ -66,7 +67,7 @@ public class RestApiController {
 		@RequestMapping(value = "/getProductMerchantFeedback/{prodId}/{MercId}", method = RequestMethod.GET)
 	    public Object getMerchantProductFeedback(@PathVariable("prodId") int prod_id,@PathVariable("MercId") int merc_id) {
 	      
-		  String uri = "http://172.16.20.10:8070/getMerchantProductRatingReview/"+merc_id+"/"+prod_id;
+		  String uri = paths.getInventory()+"/getMerchantProductRatingReview/"+merc_id+"/"+prod_id;
 		 System.out.println("===========" + uri);
 		 RestTemplate restTemplate = new RestTemplate();
 		 String result = restTemplate.getForObject(uri, String.class);
@@ -88,7 +89,7 @@ public class RestApiController {
 	    }
 
 	    /* order checkout */
-	    @RequestMapping(value = "/checkout/{query}", method = RequestMethod.GET)
+	    /*s@RequestMapping(value = "/checkout/{query}", method = RequestMethod.GET)
 	    public Object checkout(@PathVariable("query") String query) {
 	       
 		  String uri = paths.setOrder() +"/addOrder/"+query;
@@ -97,6 +98,7 @@ public class RestApiController {
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
 	    }
+	    */
 		
 		
 		/*
@@ -115,7 +117,7 @@ public class RestApiController {
 	    public Object search(@PathVariable("query") String query) {
 	       
 		  String uri = paths.getSearch() +"/search/"+query;
-		 
+		 System.out.println("Search uri\n"+ uri);
 		 RestTemplate restTemplate = new RestTemplate();
 		 String result = restTemplate.getForObject(uri, String.class);
 		 return result;
