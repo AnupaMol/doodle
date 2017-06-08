@@ -1,5 +1,4 @@
-
-	<div class="col m8 offset-m3"  style="background-color: white;">
+<div class="col m8 offset-m3"  style="background-color: white;">
 	<h4>Your cart</h4>
 	<table class="table striped">
 	<tr>
@@ -12,13 +11,14 @@
 	</tr>
 
 	<!-- For loop start -->
-	<tr ng-repeat="x in xx">
-  <td><img src="{{x.image}}" style="width:auto;height:110px;"></td>
-	<td>{{x.name}}</td>
-	<td>{{x.quantity}}</td>
-	<td>{{x.price}}</td>
-	<td>{{x.total}}</td>
-	<td><a href="/cart/delete/">Delete</a>
+	<tr ng-repeat="i in data">
+        
+  <td><img src="{{i.image}}" style="width:auto;height:110px;"></td>
+	<td>{{i.name}}</td>
+	<td>{{i.qty}}</td>
+	<td>{{i.price}}</td>
+	<td>{{i.total }}</td>
+	<td><button class="btn waves-effect" style="background-color:#0096d9" type = "submit" ng-click = "delete(i)"> Delete </button>
 	
 	</td>
 	</tr>
@@ -30,7 +30,7 @@
   <td></td>
   <td></td>
 	<td>Total</td>
-	<td>Rs 20000</td>
+	<td>Rs {{finalTotal}}</td>
 	<td></td>
 	</tr>
 	</table>
@@ -39,7 +39,7 @@
 	<div class="col m12 s12">
 	<table>
 	<tr>
-	<td><button href="/checkout" class="btn waves-effect" style="background-color:#0096d9"> <i class="material-icons">arrow_back</i>Continue Shopping</button></td>
+	<td><button onclick="window.location.href='/#!'" class="btn waves-effect" style="background-color:#0096d9"> <i class="material-icons">arrow_back</i>Continue Shopping</button></td>
 	<form >
 	<td>
 	
@@ -72,5 +72,3 @@
 
 
 </div>
-
-

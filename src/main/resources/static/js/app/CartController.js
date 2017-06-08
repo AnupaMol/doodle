@@ -1,32 +1,20 @@
-     app.controller("CartController", function($scope,$http,$stateParams,myService) {
+     app.controller("CartController", function($scope,$http,$stateParams,$localStorage,myService) {
         
             console.log("In CartController");
-            var query= document.getElementById("chkemail").value;
-            
-             $scope.xx=[{
-              "productId":20,
-              "merchantId":2,
-              "orderQuantity":3 ,
-              "orderStatus":"Approved",
-              "productPrice":3333, 
-              "userEmail":query
-            },
-            {
-              "productId":20,
-              "merchantId":2,
-              "orderQuantity":3 ,
-              "orderStatus":"Approved",
-              "productPrice":3333, 
-              "userEmail":query
-            },
-            {
-              "productId":20,
-              "merchantId":2,
-              "orderQuantity":3 ,
-              "orderStatus":"Approved",
-              "productPrice":3333, 
-              "userEmail":query
-            }];
+            $scope.data = $localStorage.ls;
+            $scope.finalTotal=0;
+            console.log($scope.data);
+            for(var i=0;i<$scope.data.length;i++){
+                console.log($scope.data[i].total);
+                $scope.finalTotal=$scope.finalTotal+$scope.data[i].total;
+            }
+
+            $scope.delete=function(z){
+                var arr= $scope.data;
+                var i= arr.indexOf(z);
+                  return arr.splice(i,1);
+                };
+  
 
             	console.log("Inside Query"+$stateParams.query);
             	var productList=myService.getData('/api/search/'+$stateParams.query);
