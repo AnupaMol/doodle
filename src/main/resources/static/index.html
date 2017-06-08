@@ -8,11 +8,13 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/style.css"/>
+      <link rel="stylesheet" href="css/owl.carousel.css">
+      <link rel="stylesheet" href="css/owl.theme.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       
     </head>
-    <body>
+    <body style="background-color: #eeeeee;">
      <div class="navbar-fixed">    
         <nav class="white">
 
@@ -136,6 +138,23 @@
         <script src="js/app/HomeController.js"></script>
         <script src="js/app/SearchController.js"></script>
         <script type="text/javascript" src='https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js'></script>
+        <script src="js/js/owl.carousel.min.js"></script>
+           <script>
+            $(document).ready(function(){                 
+                   $("#owl-demo").owlCarousel({
+ 
+                      navigation : true, // Show next and prev buttons
+                      slideSpeed : 50,
+                      paginationSpeed : 400,
+                      singleItem:true,
+                       autoPlay : true,
+                 
+                 
+                  });              
+                });
+          
+
+      </script>   
         
         
     </body>
