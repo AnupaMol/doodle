@@ -1,6 +1,12 @@
-     app.controller("ProdDescController", function($scope,$http,myService,$stateParams,storageService) {
-    	 	var arrayText = [];
-    	 	var arrayjson = [];
+     app.controller("ProdDescController", function($scope,$http,myService,$stateParams,$localStorage) {
+    	 	
+         if(typeof $localStorage.ls === undefined){
+               $localStorage.ls=[];
+                console.log("defined local storage"+ typeof $localStorage);
+            }else{
+                console.log(" local storage"+ typeof $localStorage);
+            }
+    
             console.log("In ListController");
      //       $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
           
@@ -44,8 +50,9 @@
             } 
             
             $scope.addTocart = function(){
-
-                var text = {name: $scope.content.name, 
+//                $localStorage.$reset();
+   
+                var obj = { name: $scope.content.name, 
                             prodId: $scope.content.prodId,
                             seller: $scope.content.otherMerchantToOffer[0].name,
                             sellerid: $scope.content.otherMerchantToOffer.id,
@@ -55,13 +62,23 @@
                             total: ($scope.qty*$scope.content.otherMerchantToOffer[0].price)
                            };
                 
-                arrayText.push(JSON.stringify(text));
+                console.log("dd"+typeof $localStorage.ls);
+                arrobj= $localStorage.ls;
+                console.log('initial',arrobj);
+                arrobj.push(obj);
                 
-                storageService.set('arrayjson', arrayText);
+                $localStorage.ls= arrobj;
                 
-                var test2 = storageService.get('arrayjson');
-                console.log(test2);
-                $scope.qty="";
+                var data = $localStorage.ls;
+                console.log(data);
+                
+                for(var j=0;j<data.length;j++)
+                    {
+                        console.log(data[j].name);
+                    }
+               
+                
+                 $scope.qty="";
             };
         });
 
