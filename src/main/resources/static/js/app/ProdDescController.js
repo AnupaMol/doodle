@@ -1,5 +1,12 @@
      app.controller("ProdDescController", function($scope,$http,myService,$stateParams,$localStorage) {
     	 	
+         if(typeof $localStorage.ls === undefined){
+               $localStorage.ls=[];
+                console.log("defined local storage"+ typeof $localStorage);
+            }else{
+                console.log(" local storage"+ typeof $localStorage);
+            }
+    
             console.log("In ListController");
      //       $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
           
@@ -55,6 +62,7 @@
                             total: ($scope.qty*$scope.content.otherMerchantToOffer[0].price)
                            };
                 
+                console.log("dd"+typeof $localStorage.ls);
                 arrobj= $localStorage.ls;
                 console.log('initial',arrobj);
                 arrobj.push(obj);
