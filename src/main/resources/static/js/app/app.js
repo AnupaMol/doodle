@@ -35,6 +35,12 @@ var app = angular.module('doodle', ['ui.router'])
                 controller: 'OrderController'
                 
             })
+            .state('usercart', {
+                url: '/usercart/',
+                templateUrl: 'cart.html',
+                controller: 'CartController'
+                
+            })
            
 
 }]);

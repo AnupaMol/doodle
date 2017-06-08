@@ -1,0 +1,76 @@
+
+	<div class="col m8 offset-m3"  style="background-color: white;">
+	<h4>Your cart</h4>
+	<table class="table striped">
+	<tr>
+	<td>Product</td>
+  <td>Name</td>
+	<td>Quantity</td>
+	<td>Price</td>
+	<td>Total</td>
+	<td>Delete</td>
+	</tr>
+
+	<!-- For loop start -->
+	<tr ng-repeat="x in xx">
+  <td><img src="{{x.image}}" style="width:auto;height:110px;"></td>
+	<td>{{x.name}}</td>
+	<td>{{x.quantity}}</td>
+	<td>{{x.price}}</td>
+	<td>{{x.total}}</td>
+	<td><a href="/cart/delete/">Delete</a>
+	
+	</td>
+	</tr>
+
+	
+	<tr>
+	<td></td>
+	<td></td>
+  <td></td>
+  <td></td>
+	<td>Total</td>
+	<td>Rs 20000</td>
+	<td></td>
+	</tr>
+	</table>
+	
+	<div class="row">
+	<div class="col m12 s12">
+	<table>
+	<tr>
+	<td><button href="/checkout" class="btn waves-effect" style="background-color:#0096d9"> <i class="material-icons">arrow_back</i>Continue Shopping</button></td>
+	<form >
+	<td>
+	
+                    <div class="input-field">
+                    <input id="chkemail" type="email" class="validate" required>
+                    <label for="chkemail" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                    
+                   </td>
+	<td><button type="submit" class="btn waves-effect" style="background-color:#0096d9" ng-click="Checkout()"> Checkout</button></td></form></tr>
+	</table>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	<!-- check if cart has something -->
+  
+<!-- end if -->
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</div>
+
+
+  <div style="height:100px">
+
+
+</div>
+
+

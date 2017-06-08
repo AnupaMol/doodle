@@ -86,6 +86,18 @@ public class RestApiController {
 		 System.out.println(result);
 		 return result;
 	    }
+
+	    /* order checkout */
+	    @RequestMapping(value = "/checkout/{query}", method = RequestMethod.GET)
+	    public Object checkout(@PathVariable("query") String query) {
+	       
+		  String uri = paths.setOrder() +"/addOrder/"+query;
+		 
+		 RestTemplate restTemplate = new RestTemplate();
+		 String result = restTemplate.getForObject(uri, String.class);
+		 return result;
+	    }
+		
 		
 		/*
 		 * @RequestMapping(value = "/getProd/{key}", method = RequestMethod.GET)
