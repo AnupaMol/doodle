@@ -9,33 +9,49 @@
                  <p>  Placed on  date {{x.orderitems.orderDate}} / Rs. {{x.orderitems.productPrice}}/ {{x.orderitems.productQuantity}} items</p>
                  <hr>
                  <div class="col s12 m12">
-                    <div class="card horizontal" style="height:200px;">
-                      <div class="card-image">
-                        <img src="{{x.orderitems.productImage}}" style="height:200px;">
+                    <div class="card horizontal">
+                      <div class="card-image" style="width:40%;height:200px;">
+                        <img src="{{x.orderitems.productImage}}" style="max-height: 100%;max-width:100%;">
                       </div>
                       <div class="card-stacked">
                   <div class="row" style="width:100%">
-                        <div class="card-content col m6">
+                        <div class="card-content col m6 s12">
                           <p>{{x.orderitems.productName}}</p>
                           <p>Seller : {{x.orderitems.merchantName}}</p>
                           <p>Price : {{x.orderitems.productPrice}}</p>
                           <p>Quantity : {{x.orderitems.productQuantity}} </p>
                       
                         </div>
-                    <div class="col m6">
+                    <div class="col m6 s12">
                     <br>
                         <p>Total : {{x.orderitems.productPrice*x.orderitems.productQuantity}}</p>
                       <p>Status : {{x.orderitems.orderStatus}}</p>
                     </div>
                     </div>
-                        <div class="card-action">
-                          <a href="#">Give Feedback</a>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
 
           </div>
+          <div class="col m12">
+                      <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                          <div class="collapsible-header">Give Feedback</div>
+                          <div class="collapsible-body">
+                          <span><input type="text" id="feedback{{x.productid}}" placeholder="Feedback">
+                          <select style="display:inline-block;width:50%" ng-model="qty{{x.productid}}">
+                            <option value="" disabled selected>Rating</option>
+                            <option value="1">1</option>
+                            <option value="1">2</option>
+                            <option value="1">3</option>
+                            <option value="1">4</option>
+                            <option value="1">5</option></select>
+                            <button type="submit" class="btn">Submit</button> </span></div>
+                        </li>
+                        
+                      </ul>
+                </div>   
            </div>
         
            </div> 

@@ -18,7 +18,7 @@ $('.dropdown-button').dropdown({
       startingTop: '4%', 
       endingTop: '10%', 
      
-     complete: function() { alert('Closed'); } 
+     // complete: function() { alert('Closed'); } 
     }
   );
  $(document).ready(function(){
