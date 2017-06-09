@@ -23,33 +23,40 @@
             
             $scope.Checkout=function(){
             var email=document.getElementById("chkemail").value;
-            var listOfProd=[];
-            for(var i=0;i<$scope.data.length;i++){
-            	var obj={};
-            	obj["productId"]=$scope.data[i].prodId;
-            	obj["merchantId"]=$scope.data[i].sellerid;
-            	obj["productName"]=$scope.data[i].name;
-            	obj["userEmail"]=email;
-            	obj["orderQuantity"]=$scope.data[i].qty;
-            	obj["orderStatus"]="Approved";
-            	obj["productPrice"]=$scope.data[i].price;
-            	console.log("single");
-            	console.log(obj);
-            	listOfProd.push(obj);
-            	          	
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(re.test(email)){
+            	var listOfProd=[];
+                for(var i=0;i<$scope.data.length;i++){
+                	var obj={};
+                	obj["productId"]=$scope.data[i].prodId;
+                	obj["merchantId"]=$scope.data[i].sellerid;
+                	obj["productName"]=$scope.data[i].name;
+                	obj["userEmail"]=email;
+                	obj["orderQuantity"]=$scope.data[i].qty;
+                	obj["orderStatus"]="Approved";
+                	obj["productPrice"]=$scope.data[i].price;
+                	console.log("single");
+                	console.log(obj);
+                	listOfProd.push(obj);
+                	          	
+                }
+                console.log(listOfProd);
+                $http.post('/api/addOrder', JSON.stringify(listOfProd)).then(function (response) {
+                	console.log(response.data.message);
+                	if (response.data.message=="Success"){
+                		console.log("orderPlaced");
+                		$localStorage.ls=[];
+                		alert("orderPlaced");
+                		
+                		$window.location.href = '#!/userorder/'+email
+                	}else{
+                		alert(response.data.message);
+                		console.log("orderNot Placed");
+                	}
+                	
+                	});
             }
-            console.log(listOfProd);
-            $http.post('/api/addOrder', JSON.stringify(listOfProd)).then(function (response) {
-            	console.log(response.data.message);
-            	if (response.data.message==="Success"){
-            		console.log("orderPlaced");
-            		alert("orderPlaced");
-            		$window.location.href = '#!/userorder/'+email
-            	}else{
-            		console.log("orderNot Placed");
-            	}
-            	
-            	});
+            
             
             }
         });
