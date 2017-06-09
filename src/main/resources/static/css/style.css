@@ -115,4 +115,9 @@ border: solid 0.9px #f3f3f3;
     margin-left: 22%;
     -ms-touch-action: pan-y;
 }
-
+.subhead
+{
+    font-size: 20px;
+    font-style: bold;
+    
+}
