@@ -57,9 +57,6 @@ app.run(function($rootScope,$http,$window){
         $window.location.href = '#!/userorder/'+email;
          $('.modal').modal('close');
         }
-        else{
-            
-        }
 		
 	}
 	$rootScope.search=function(){

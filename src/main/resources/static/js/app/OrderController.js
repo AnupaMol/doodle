@@ -10,11 +10,14 @@ app.controller("OrderController", function($scope,$http,myService,$stateParams) 
     });
 	
 	$scope.addFeedback=function(index,prodId,merchId){
+		
 		console.log(index);
 		console.log(prodId);
 		console.log(merchId);
 		var rating=$scope.rating[index];//
 		var  review=$scope.feedback[index];
+		
+		if(review!=null && (rating!=0 || rating!="0" || rating!="")){
 		var email=$stateParams.email;
 		var obj={};
 		obj["productId"]=prodId;//
@@ -23,12 +26,14 @@ app.controller("OrderController", function($scope,$http,myService,$stateParams) 
 		obj["rating"]=rating;//
 		obj["review"]=review;//
 		
-		
-		
 		$http.post('/api/addFeedback', JSON.stringify(obj)).then(function (response) {
         	
         	console.log(response.data);
         	});
+		}
+		else{
+			alert('Please give quantity and rating both');
+		}
 	}
 	
 	    $('.collapsible').collapsible();
@@ -85,7 +90,5 @@ app.controller("OrderController", function($scope,$http,myService,$stateParams) 
             $scope.ShowHide = function () {
                 $scope.IsVisible = $scope.IsVisible ? false : true;
             };
-            // $http.get('http://localhost:8080/getprod').then(function (response) {
-            //     $scope.content = response;
-            // });
+            
         });

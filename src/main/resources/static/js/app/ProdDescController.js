@@ -10,7 +10,7 @@
          
     
             console.log("In ListController");
-     //       $scope.category = ["Laptop", "Mobile", "TV","SmartPhones","Power bank","USB","Chargers"];
+     
           
             $scope.prodId = $stateParams.prodId; 
             $scope.currentMerchantName=";";
@@ -86,7 +86,7 @@
                         console.log(data[j].name);
                     }
                
-                
+                alert("Product added to cart");
                  $scope.qty="";
             	}else{
             		alert("Please select Quantity");

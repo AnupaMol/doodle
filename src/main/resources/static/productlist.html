@@ -3,9 +3,10 @@
 
   <div class="col m8 offset-m3" style="background-color: white;">
   <div class="row" style="display:inline-block;width:100%;" >
-    <div  ng-repeat="x in content" class="col m3 s6 shadow" id="t" style="display:inline;height:400px;" >
+    <div  ng-repeat="x in content" class="col m3 s6 shadow" id="t" style="display:inline;height:350px;" >
         <center>
-          <a href="#!/prodlist/{{x.productid}}"> <img  class="img-responsive center-align"  src="{{x.imageurl}}" style="height: 140px;width: auto;padding-top: 13px;" >
+          <a href="#!/prodlist/{{x.productid}}">
+          <div style="height:140px;width:auto;"> <img  class="img-responsive center-align"  src="{{x.imageurl}}" style="max-height: 100%;max-width:100%;padding-top: 13px;" ></div>
       <p> {{ x.name }}</p> 
           <p>&nbsp; &nbsp;&#8377; {{x.price}}</p>
            <p>{{x.rating}}<i class="material-icons" style="font-size:13px;">star</i></p></a></center>

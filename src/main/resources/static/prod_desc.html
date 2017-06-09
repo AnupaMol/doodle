@@ -31,13 +31,13 @@
   <div class="col m8 offset-m3">
   <div class="row" style="display:inline-block;width:100%">
     
-      <div ng-repeat="y in content.otherMerchantToOffer" ng-hide="currentMerchantName==y.name"  class="col m3 s6 shadow" id="t" style="display:inline;height:400px;width:25%;" >
+      <div ng-repeat="y in content.otherMerchantToOffer" ng-hide="currentMerchantName==y.name"  class="col m3 s6 shadow" id="t" style="display:inline;height:380px;width:25%;" >
         <center >
           <a href="" ng-click="getProdMerchantFeed(content.productid,y.merchantId,$index)"> <img src="{{y.logo}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
           <span style="color:grey;">  <p> {{content.name}} </p> </span>
         <span style="color:grey;">  <p> {{y.name}} </p> </span>      
           <span style="color:grey;"><p>&#8377; {{y.price}}</p></span>
-          <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons">stars</i></p></span></a></center>
+          <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons" style="font-size:13px;">star</i></p></span></a></center>
     </div>
     
   </div>
