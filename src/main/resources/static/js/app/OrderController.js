@@ -1,6 +1,7 @@
 app.controller("OrderController", function($scope,$http,myService,$stateParams) {
 	$scope.feedback=[];
 	$scope.rating=[];
+  $scope.useremail=$stateParams.email;
 	console.log($stateParams.email);
 	var orderList=myService.getData('/api/getOrderByEmail/'+$stateParams.email);
 	orderList.then(function(result){

@@ -52,8 +52,15 @@ app.run(function($rootScope,$http,$window){
 	$rootScope.UserOrder=function(){
 		console.log("Insie user email");
 		var email= document.getElementById("email").value;
-		console.log(email);
-		$window.location.href = '#!/userorder/'+email;
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+         if(re.test(email)){
+        $window.location.href = '#!/userorder/'+email;
+         $('.modal').modal('close');
+        }
+        else{
+            
+        }
+		
 	}
 	$rootScope.search=function(){
 		console.log("Insie app searchcs");
