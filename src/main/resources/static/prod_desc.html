@@ -1,42 +1,53 @@
       
     <div class="row" style="width:100%; margin-top:5%" >
             <div class="col s3 m3 offset-m2">
-                <img src="{{content.imageurl}}" width="100%" height="100%" ><br/>
-                Quantity: <select id ="qty" style="display:block"
-                        ng-model="qty">
-                  <option value="1" selected>1</option>
+                <img src="{{content.imageurl}}" width="100%" height="100%" ><br/><br/>
+                <form name="form" novalidate>
+                <select name="qty" id ="qty" class="qty" style="display:block"
+                        ng-model="qty" required>
+                  <option value="" disabled selected>Select Quantity</option>
+                  <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
-                
+                <br/>
                 <button class="btn waves-effect" style="background-color:#0096d9" ng-click = "addTocart()"> Add to cart </button>
             </div>
             
-            <div class="col s5 m5 offset-s2 offset-m2" >
-                <h5>{{content.name}}</h5>
+            <div class="col s5 m5 offset-s1 offset-m1" >
+                <h4>{{content.name}}</h4>
                 Sold by: {{currentMerchantName}}<br/>
-                <h5>{{currentMerchantPrice}}</h5><br/>
+                <h5>&#8377; {{currentMerchantPrice}}</h5>
+                <hr/>
                 <p class="subhead">USP</p>{{content.usp}} <br/>
                 <p class="subhead">Attributes</p> {{content.attributes}}<br/>
                 <p class="subhead">Product Description</p> {{content.description}}<br/>
-                <p class="subhead">Reviews and rating by customers</p> Rating:{{content.productRatingReviews[0].rating}}<br/>Review:{{content.productRatingReviews[0].review}}
-            </div>
+              </div>
     </div>
-            <section class="row" style="position :relative;width:100%">
-                <center><h5>Other Merchants selling this product</h5></center>
+            <section class="row" style="position :relative;width:100%"><br/>
+                <center><h5>Available from these sellers</h5></center>
   <div class="col m8 offset-m3">
-  <div class="row" style="display:inline-block;width:100%;">
+  <div class="row" style="display:inline-block;width:100%">
     
-      <div ng-repeat="y in content.otherMerchantToOffer" ng-hide="currentMerchantName==y.name"  class="col m3 s6 shadow" id="t" style="display:inline;height:300px;width:25%;" >
+      <div ng-repeat="y in content.otherMerchantToOffer" ng-hide="currentMerchantName==y.name"  class="col m3 s6 shadow" id="t" style="display:inline;height:400px;width:25%;" >
         <center >
           <a href="" ng-click="getProdMerchantFeed(content.productid,y.merchantId,$index)"> <img src="{{y.logo}}" class="img-responsive center-align" style="height: 140px;width: auto;padding-top: 13px;" >
           <span style="color:grey;">  <p> {{content.name}} </p> </span>
         <span style="color:grey;">  <p> {{y.name}} </p> </span>      
-          <span style="color:grey;"><p>{{y.price}}</p></span>
+          <span style="color:grey;"><p>&#8377; {{y.price}}</p></span>
           <span style="color:grey;"> <p>{{y.rating}} <i class="material-icons">stars</i></p></span></a></center>
     </div>
     
   </div>
   </div>
 </section>
+
+<h5><center>Customer Reviews and Rating</center></h5>
+<div class="col m8 offset-m3" ng-repeat="y in content.productRatingReviews">
+Rating:{{y.rating}}<br/>
+Review:{{y.review}}<br/><br/>
+</div>>
+
 

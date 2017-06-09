@@ -19,7 +19,7 @@
         <nav class="white">
 
             <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Ecommerce</a>  
+              <a href="#" class="brand-logo">Doodle</a>  
               
                 <ul class="hide-on-med-and-down right">               
                     <li>    
@@ -67,8 +67,8 @@
                     <br>
                     
                     <div class="input-field">
-                    <input id="email" type="text" class="validate">
-                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    <input id="email" type="text" class="validate" required>
+                    <label for="email" data-error="invalid email" data-success="valid email">Email</label>
                     </div>
                     <button class="waves-effect waves-light btn" type="submit" ng-click="UserOrder()">Submit</button>
                     
@@ -101,29 +101,31 @@
 </div>
        
         <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Ecommerce Logo</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        
           <div class="footer-copyright">
-            <div class="container" style="margin-left: 20%;">
-            © 2017 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
+                <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Doodle</h5>
+<!--            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>-->
           </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text"></h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">About Us</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Terms and Conditions</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Cancellation and returns</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2017 Copyright Doodle.com
+<!--        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+        </div>
+      </div>
         </footer>  
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/js/materialize.min.js"></script>

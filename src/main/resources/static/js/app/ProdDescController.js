@@ -1,5 +1,5 @@
      app.controller("ProdDescController", function($scope,$http,myService,$stateParams,$localStorage) {
-    	 //$localStorage.ls=[];
+    	 $localStorage.ls=[];
          if(typeof $localStorage.ls === undefined){
                $localStorage.ls=[];
                 console.log("defined local storage"+ typeof $localStorage);
