@@ -56,9 +56,12 @@
             } 
             
             $scope.addTocart = function(){
-//                $localStorage.$reset();
-   
-                var obj = { name: $scope.content.name, 
+            	 
+            	var cartQty=document.getElementById("cartQty").selectedIndex;//document.getElementById('cartQty').value;
+            	console.log("Qty" +cartQty);
+            	if(cartQty!="" ){
+            		console.log("InsideQty" +cartQty);
+            		var obj = { name: $scope.content.name, 
                             prodId: $scope.content.productid,
                             seller: $scope.currentMerchantName,
                             sellerid: $scope.currentMerchanId,
@@ -85,6 +88,12 @@
                
                 
                  $scope.qty="";
+            	}else{
+            		alert("Please select Quantity");
+            	}
+//                $localStorage.$reset
+   
+                
             };
         });
 
