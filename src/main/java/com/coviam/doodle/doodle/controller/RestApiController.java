@@ -116,35 +116,11 @@ public class RestApiController {
 			}
 			System.out.println("checkout Order"+result);
 			OrderResponse response=new OrderResponse();
-			response.setMessage("Success");
+			response.setMessage(result);
 			return response;
 			
 		}
-	    /* order checkout */
-	    /*s@RequestMapping(value = "/checkout/{query}", method = RequestMethod.GET)
-	    public Object checkout(@PathVariable("query") String query) {
-	       
-		  String uri = paths.setOrder() +"/addOrder/"+query;
-		 
-		 RestTemplate restTemplate = new RestTemplate();
-		 String result = restTemplate.getForObject(uri, String.class);
-		 return result;
-	    }
-	    */
-		
-		
-		/*
-		 * @RequestMapping(value = "/getProd/{key}", method = RequestMethod.GET)
-	    public ModelAndView getProduct(@PathVariable("key") String prod_id) {
-	       
-
-		 final String uri = paths.getProduct() +"/getProduct/"+prod_id;
-		 
-		 RestTemplate restTemplate = new RestTemplate();
-		 String result = restTemplate.getForObject(uri, String.class);
-		 return new ModelAndView("prod_desc.html", "product",result);
-	    }
-		 */
+	  
 		@RequestMapping(value = "/search/{query}", method = RequestMethod.GET)
 	    public Object search(@PathVariable("query") String query) {
 	       
