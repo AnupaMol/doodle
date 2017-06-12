@@ -32,7 +32,7 @@ app.controller("OrderController", function($scope,$http,myService,$stateParams) 
         	});
 		}
 		else{
-			alert('Please give quantity and rating both');
+			alert('Please give review and rating both');
 		}
 	}
 	
